@@ -13,5 +13,14 @@ describe('UrlHelper', function () {
         it('removes slashes at the end of urls', function(){
            assert.equal(UrlHelper.fileNameForUrl('http://bob.com/1234/'), '1234');
         });
+        it('removes double slashes at the end of urls', function(){
+           assert.equal(UrlHelper.fileNameForUrl('http://test.com/1234//'), '1234');
+        });
+        it('removes many slashes at the end of urls', function(){
+           assert.equal(UrlHelper.fileNameForUrl('http://test.com/1234////'), '1234');
+        });
+        it('extracts name from end of url', function(){
+           assert.equal(UrlHelper.fileNameForUrl('http://test.com/1234'), '1234');
+        });
     });
 });
